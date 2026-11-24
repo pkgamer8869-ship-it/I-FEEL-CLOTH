@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="I FEEL CLOTH - Fashion, lifestyle and everyday shopping in India.">
+<title>I FEEL CLOTH | Everyday Shopping</title>
+<style>
+:root{--ink:#171717;--muted:#6b7280;--cream:#f7f5f0;--accent:#b8864b;--line:#e8e4dc;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--ink)}
+a{color:inherit;text-decoration:none}button,input{font:inherit}
+.top{background:#171717;color:#fff;text-align:center;padding:9px 12px;font-size:12px;letter-spacing:.7px}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.nav{max-width:1160px;margin:auto;padding:16px 20px;display:flex;align-items:center;gap:22px}
+.logo{font-family:Georgia,serif;font-size:25px;font-weight:bold;letter-spacing:1.2px;white-space:nowrap}
+.logo span{color:var(--accent)}
+.tag{font-size:10px;color:var(--muted);letter-spacing:2px;margin-top:4px}
+.search{flex:1;display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:#fafafa}
+.search input{width:100%;border:0;background:transparent;padding:12px;outline:none}
+.search button{border:0;background:#171717;color:#fff;padding:0 17px;cursor:pointer}
+.navlinks{display:flex;gap:16px;font-size:13px;white-space:nowrap}
+.hero{max-width:1160px;margin:24px auto;padding:0 20px}
+.hero-inner{min-height:330px;background:linear-gradient(100deg,rgba(17,17,17,.88),rgba(17,17,17,.24)),url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1800&q=85') center/cover;border-radius:5px;color:white;display:flex;align-items:center;padding:45px}
+.hero-copy{max-width:470px}.eyebrow{font-size:11px;letter-spacing:3px;color:#e6c79f}
+h1{font-family:Georgia,serif;font-size:clamp(36px,6vw,62px);line-height:1.04;margin:15px 0}
+.hero p{color:#f0ece5;line-height:1.6;max-width:390px}
+.cta{display:inline-block;margin-top:13px;background:var(--accent);color:white;padding:13px 22px;font-size:12px;letter-spacing:1px;border:0;cursor:pointer}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.section-head{display:flex;align-items:end;justify-content:space-between;margin:34px 0 17px}
+.section-head h2{font-family:Georgia,serif;font-size:28px;margin:0}
+.section-head p{color:var(--muted);font-size:13px;margin:5px 0 0}
+.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.cat{background:#fff;border:1px solid var(--line);padding:18px 10px;text-align:center;cursor:pointer;transition:.2s}
+.cat:hover,.cat.active{border-color:var(--accent);transform:translateY(-2px)}
+.cat .emoji{font-size:27px;display:block;margin-bottom:9px}.cat strong{font-size:12px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:18px 0}
+.toolbar span{font-size:13px;color:var(--muted)}
+.toolbar select{border:1px solid var(--line);padding:10px;background:white}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.product{background:#fff;border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column}
+.product img{width:100%;aspect-ratio:4/4.4;object-fit:cover;background:#eee}
+.pinfo{padding:14px;display:flex;flex-direction:column;flex:1}
+.pcat{font-size:10px;color:var(--accent);letter-spacing:1px;text-transform:uppercase}
+.pname{font-size:14px;margin:7px 0;line-height:1.4;min-height:38px}
+.price{font-weight:bold;font-size:16px}.old{font-size:12px;color:#9ca3af;text-decoration:line-through;margin-left:7px;font-weight:normal}
+.buy{display:block;text-align:center;background:#171717;color:white;padding:11px;margin-top:13px;font-size:11px;letter-spacing:1px}
+.buy:hover{background:var(--accent)}
+.note{font-size:11px;color:var(--muted);line-height:1.5;margin-top:8px}
+.empty{grid-column:1/-1;background:white;padding:30px;text-align:center;color:var(--muted)}
+footer{margin-top:55px;background:#171717;color:white;padding:35px 20px}
+.foot{max-width:1160px;margin:auto;display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}
+.foot p{color:#c6c6c6;font-size:12px;line-height:1.7;max-width:500px}
+.disclosure{border-top:1px solid #444;margin-top:20px;padding-top:16px;font-size:11px;color:#c6c6c6}
+@media(max-width:800px){.nav{flex-wrap:wrap;gap:12px}.search{order:3;flex-basis:100%}.navlinks{margin-left:auto}.categories{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,1fr)}.hero-inner{min-height:300px;padding:28px}}
+@media(max-width:420px){.logo{font-size:21px}.navlinks{font-size:11px;gap:10px}.hero{padding:0 12px}.wrap{padding:0 12px}.hero-inner{padding:22px}.products{gap:10px}.pinfo{padding:10px}.pname{font-size:13px}.buy{padding:10px 5px}}
+</style>
+</head>
+<body>
+<div class="top">INDIA-WIDE SHOPPING IN ₹ INR &nbsp; | &nbsp; DISCOVER FASHION, HOME & EVERYDAY ESSENTIALS</div>
+<header>
+  <div class="nav">
+    <div>
+      <div class="logo">I FEEL <span>CLOTH</span></div>
+      <div class="tag">YOUR EVERYDAY SHOPPING DESTINATION</div>
+    </div>
+    <div class="search"><input id="search" type="search" placeholder="प्रोडक्ट खोजें / Search products..." aria-label="Search products"><button onclick="renderProducts()">SEARCH</button></div>
+    <nav class="navlinks"><a href="#categories">Categories</a><a href="#products">Shop</a></nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow">STYLE • HOME • EVERYDAY</div>
+      <h1>Everything you love, in one place.</h1>
+      <p>Fashion से लेकर रोजमर्रा की जरूरतों तक — अपने पसंदीदा प्रोडक्ट खोजें और भरोसेमंद shopping partners से खरीदें।</p>
+      <a class="cta" href="#products">EXPLORE COLLECTION</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="categories">
+  <div class="section-head"><div><h2>Shop by Category</h2><p>अपनी पसंद की कैटेगरी चुनें</p></div></div>
+  <div class="categories" id="categoryList"></div>
+</section>
+
+<section class="wrap" id="products">
+  <div class="section-head"><div><h2>Popular Picks</h2><p>आपके लिए चुने गए कुछ लोकप्रिय प्रोडक्ट</p></div></div>
+  <div class="toolbar"><span id="count">Products</span><select id="sort" onchange="renderProducts()"><option value="default">Sort: Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select></div>
+  <div class="products" id="productGrid"></div>
+</section>
+</main>
+
+<footer>
+  <div class="foot">
+    <div><div class="logo">I FEEL <span>CLOTH</span></div><p>एक ही जगह पर fashion, lifestyle और daily-use products खोजें। यह एक affiliate shopping demo website है।</p></div>
+    <div><strong>Customer Information</strong><p>भारत में खरीदारी • कीमतें भारतीय रुपये में<br>प्रोडक्ट की अंतिम कीमत और उपलब्धता partner website पर देखें।</p></div>
+  </div>
+  <div class="foot disclosure">Affiliate Disclosure: इस वेबसाइट पर कुछ खरीदारी लिंक affiliate links हो सकते हैं। यदि आप ऐसे लिंक से खरीदारी करते हैं, तो हमें बिना किसी अतिरिक्त कीमत के कमीशन मिल सकता है। अभी यह demo है — असली कमाई के लिए हर प्रोडक्ट में अपने स्वीकृत affiliate program का सही लिंक जोड़ें।</div>
+</footer>
+
+<script>
+const categories = [
+  {name:"All Products",icon:"✦"},
+  {name:"Men's Fashion",icon:"👕"},
+  {name:"Women's Fashion",icon:"👗"},
+  {name:"Footwear",icon:"👟"},
+  {name:"Home & Kitchen",icon:"🏠"},
+  {name:"Beauty & Care",icon:"🧴"},
+  {name:"Electronics",icon:"📱"},
+  {name:"Kids",icon:"🧸"},
+  {name:"Bags & Accessories",icon:"👜"}
+];
+const products = [
+ {name:"Classic Casual Shirt",cat:"Men's Fashion",price:799,old:1299,img:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=700&q=80"},
+ {name:"Everyday Women's Outfit",cat:"Women's Fashion",price:999,old:1499,img:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=80"},
+ {name:"Comfort Sneakers",cat:"Footwear",price:1499,old:2199,img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80"},
+ {name:"Minimal Everyday Bag",cat:"Bags & Accessories",price:1199,old:1799,img:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=80"},
+ {name:"Kitchen Essentials Set",cat:"Home & Kitchen",price:599,old:899,img:"https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=700&q=80"},
+ {name:"Daily Care Essentials",cat:"Beauty & Care",price:449,old:699,img:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=80"},
+ {name:"Wireless Headphones",cat:"Electronics",price:1299,old:1999,img:"https://images.unsplash.com/photo-1504074401260-3f1d3e6c5f9b?auto=format&fit=crop&w=700&q=80"},
+ {name:"Kids Casual Wear",cat:"Kids",price:499,old:799,img:"https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=700&q=80"}
+];
+let activeCategory="All Products";
+const money=n=>new Intl.NumberFormat("en-IN",{style:"currency",currency:"INR",maximumFractionDigits:0}).format(n);
+function renderCategories(){
+ document.getElementById("categoryList").innerHTML=categories.map(c=>`<button class="cat ${activeCategory===c.name?'active':''}" onclick="chooseCategory('${c.name.replace(/'/g,"\\'")}')"><span class="emoji">${c.icon}</span><strong>${c.name}</strong></button>`).join("");
+}
+function chooseCategory(c){activeCategory=c;renderCategories();renderProducts();}
+function renderProducts(){
+ const q=document.getElementById("search").value.trim().toLowerCase();
+ let list=products.filter(p=>(activeCategory==="All Products"||p.cat===activeCategory)&&(p.name.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q)));
+ const sort=document.getElementById("sort").value;
+ if(sort==="low")list.sort((a,b)=>a.price-b.price);
+ if(sort==="high")list.sort((a,b)=>b.price-a.price);
+ document.getElementById("count").textContent=`${list.length} products • Prices in INR`;
+ document.getElementById("productGrid").innerHTML=list.length?list.map(p=>`<article class="product"><img src="${p.img}" alt="${p.name}" loading="lazy"><div class="pinfo"><div class="pcat">${p.cat}</div><div class="pname">${p.name}</div><div class="price">${money(p.price)} <span class="old">${money(p.old)}</span></div><a class="buy" href="#" onclick="alert('यह demo बटन है। असली affiliate URL जोड़ने के बाद ग्राहक partner store पर जा सकेगा।');return false;">VIEW / BUY NOW</a><div class="note">Demo listing • कीमत और उपलब्धता बदल सकती है</div></div></article>`).join(""):'<div class="empty">इस कैटेगरी में अभी कोई प्रोडक्ट नहीं मिला। दूसरी कैटेगरी या नाम से खोजें।</div>';
+}
+document.getElementById("search").addEventListener("input",renderProducts);
+renderCategories();renderProducts();
+</script>
+</body>
+</html>
