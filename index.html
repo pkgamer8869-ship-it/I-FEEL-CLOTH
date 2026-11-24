@@ -46,141 +46,188 @@ footer{margin-top:48px;background:var(--dark);color:#fff;padding:34px 20px}.foot
 <section class="wrap" id="shop"><div class="section-head"><div><h2>Popular Picks</h2><p>अलग-अलग कैटेगरी के चुने हुए प्रोडक्ट</p></div></div>
 <div class="toolbar"><span id="count">Products</span><select id="sort" onchange="render()"><option value="featured">Sort: Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select></div>
 <div class="products" id="grid"></div>
-<div class="trust"><div><strong>🇮🇳 India Focused</strong>भारतीय रुपये में कीमतें</div><div><strong>🛍️ Multiple Categories</strong>Fashion से daily essentials तक</div><div><strong>🔗 Partner Shopping</strong>खरीदारी partner store पर होगी</div></div>
-<!-- Products & Cart Section -->
-<div id="shop-area" style="max-width: 900px; margin: 30px auto; font-family: sans-serif;">
-  <h2>Products</h2>
-  <div id="product-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;"></div>
+    <div class="trust"><div><strong>🇮🇳 India Focused</strong><br>भारतीय रुपये में कीमतें</div><div><strong>🛍️ Multiple Categories</strong><br>Fashion से daily essentials तक</div><div><strong>📦 Easy Reselling Order</strong><br>WhatsApp पर सीधा ऑर्डर बुक करें</div></div>
+  </section></main>
 
-  <hr style="margin: 30px 0;">
+  <!-- Cart & WhatsApp Checkout Section -->
+  <section class="wrap" id="cart-section" style="margin-top: 28px; margin-bottom: 40px;">
+    <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:20px;">
+      <h2 style="margin:0 0 12px;">Your Cart (<span id="cart-count">0</span>)</h2>
+      <div id="cart-items"><p style="color:var(--muted);">Cart अभी खाली है। किसी प्रोडक्ट पर Add to Cart दबाएं।</p></div>
+      <h3 style="margin:14px 0;">Total: <span id="cart-total">₹0</span></h3>
 
-  <h2>Your Cart (<span id="cart-count">0</span>)</h2>
-  <div id="cart-items"></div>
-  <h3>Total: ₹<span id="cart-total">0</span></h3>
+      <div id="checkout-box" style="display:none; background:#fafafa; border:1px solid var(--line); padding:16px; border-radius:6px; margin-top:14px;">
+        <h3 style="margin-top:0;">ग्राहक की जानकारी (WhatsApp Order)</h3>
+        <input type="text" id="cust-name" placeholder="ग्राहक का पूरा नाम" style="width:100%; padding:10px; margin-bottom:10px; border:1px solid var(--line); border-radius:4px; box-sizing:border-box;">
+        <input type="tel" id="cust-phone" placeholder="ग्राहक का मोबाइल नंबर" style="width:100%; padding:10px; margin-bottom:10px; border:1px solid var(--line); border-radius:4px; box-sizing:border-box;">
+        <textarea id="cust-address" rows="3" placeholder="पूरा पता (House No, Street, City, State, Pincode)" style="width:100%; padding:10px; margin-bottom:12px; border:1px solid var(--line); border-radius:4px; box-sizing:border-box;"></textarea>
+        <button type="button" onclick="sendOrderToWhatsApp()" style="background:#171717; color:#fff; border:none; padding:12px 18px; border-radius:4px; cursor:pointer; font-weight:600;">
+          Place Order on WhatsApp
+        </button>
+      </div>
+    </div>
+  </section>
 
-  <div id="checkout-box" style="display:none; background: #f9f9f9; padding: 16px; border-radius: 8px; margin-top: 15px;">
-    <h3>Customer Details (Order on WhatsApp)</h3>
-    <input type="text" id="cust-name" placeholder="ग्राहक का पूरा नाम" style="width:100%; padding:8px; margin-bottom:8px;"><br>
-    <input type="tel" id="cust-phone" placeholder="मोबाइल नंबर" style="width:100%; padding:8px; margin-bottom:8px;"><br>
-    <textarea id="cust-address" placeholder="पूरा पता (House No, Area, City, Pincode)" style="width:100%; padding:8px; margin-bottom:8px;"></textarea><br>
-    <button onclick="sendOrderToWhatsApp()" style="background:#25D366; color:#fff; border:none; padding:12px 20px; border-radius:6px; cursor:pointer; font-size:16px;">
-      Place Order on WhatsApp
-    </button>
-  </div>
-</div>
+  <footer class="foot"><div class="wrap"><div class="foot-grid"><div><div class="logo">I FEEL <em>CLOTH</em></div><p class="foot-copy">Your everyday shopping destination. Fashion, lifestyle और रोज़मर्रा की ज़रूरतों के लिए आसान खरीदारी।</p></div></div><div class="copy">© I FEEL CLOTH. All rights reserved.</div></div></footer>
 
-<script>
-  // Step A: यहाँ अपने Meesho के प्रोडक्ट्स डालें
-  const products = [
-    {
-      id: 1,
-      name: "Cotton Kurta Set (M/L/XL)",
-      price: 499,
-      image: "https://via.placeholder.com/250" // यहाँ अपनी फोटो का लिंक डालें
-    },
-    {
-      id: 2,
-      name: "Men Casual Shirt",
-      price: 599,
-      image: "https://via.placeholder.com/250" // यहाँ अपनी फोटो का लिंक डालें
-    }
-  ];
+  <script>
+    const categories = [
+      ["All Products","✦"],
+      ["Men's Fashion","👔"],
+      ["Women's Fashion","👗"],
+      ["Footwear","👟"],
+      ["Home & Kitchen","🏠"],
+      ["Beauty & Care","✨"],
+      ["Electronics","🎧"],
+      ["Kids","🧸"]
+    ];
 
-  let cart = JSON.parse(localStorage.getItem("ifeel_cart")) || [];
+    // यहाँ अपने Meesho के प्रोडक्ट्स डालें
+    const products = [
+      {id:1, name:"Cotton Kurta Set (M/L/XL)", cat:"Women's Fashion", price:499, old:799, img:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80"},
+      {id:2, name:"Men Casual Shirt", cat:"Men's Fashion", price:599, old:999, img:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80"}
+    ];
 
-  function renderProducts() {
-    const container = document.getElementById("product-list");
-    container.innerHTML = products.map(p => `
-      <div style="border:1px solid #ddd; padding:12px; border-radius:8px;">
-        <img src="${p.image}" alt="${p.name}" style="width:100%; height:180px; object-fit:cover; border-radius:6px;">
-        <h4 style="margin:10px 0 5px;">${p.name}</h4>
-        <p style="margin:0 0 10px; font-weight:bold;">₹${p.price}</p>
-        <button onclick="addToCart(${p.id})" style="background:#111; color:#fff; border:none; padding:8px 14px; border-radius:5px; cursor:pointer;">
-          Add to Cart
-        </button>
-      </div>
-    `).join("");
-  }
+    let active = "All Products";
+    let cart = JSON.parse(localStorage.getItem("ifeel_cart")) || [];
+    const money = new Intl.NumberFormat("en-IN", {style:"currency", currency:"INR", maximumFractionDigits:0});
 
-  function addToCart(id) {
-    const item = products.find(p => p.id === id);
-    const existing = cart.find(c => c.id === id);
-    if (existing) {
-      existing.qty += 1;
-    } else {
-      cart.push({ ...item, qty: 1 });
-    }
-    saveAndRenderCart();
-  }
+    function drawCats() {
+      document.getElementById("cats").innerHTML = categories.map(([name, icon]) =>
+        `<button type="button" class="cat ${active===name?'active':''}" onclick="pick('${name.replace(/'/g,"\\'")}')"><span class="ico">${icon}</span>${name}</button>`
+      ).join("");
+    }
 
-  function removeFromCart(id) {
-    cart = cart.filter(c => c.id !== id);
-    saveAndRenderCart();
-  }
+    function pick(name) {
+      active = name;
+      drawCats();
+      render();
+    }
 
-  function saveAndRenderCart() {
-    localStorage.setItem("ifeel_cart", JSON.stringify(cart));
-    const cartDiv = document.getElementById("cart-items");
-    const countSpan = document.getElementById("cart-count");
-    const totalSpan = document.getElementById("cart-total");
-    const checkoutBox = document.getElementById("checkout-box");
+    function render() {
+      const q = document.getElementById("search").value.toLowerCase().trim();
+      let list = products.filter(p => (active==="All Products" || p.cat===active) && (!q || p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q)));
+      const sort = document.getElementById("sort").value;
+      if (sort === "price-asc") list = [...list].sort((a,b) => a.price - b.price);
+      if (sort === "price-desc") list = [...list].sort((a,b) => b.price - a.price);
 
-    let total = 0;
-    let count = 0;
+      document.getElementById("count").textContent = list.length + " products";
+      document.getElementById("grid").innerHTML = list.map(p => `
+        <article class="product">
+          <img src="${p.img}" alt="${p.name}" loading="lazy">
+          <div class="p-body">
+            <div class="p-cat">${p.cat}</div>
+            <h3 class="p-name">${p.name}</h3>
+            <div class="price-row">
+              <span class="price">${money.format(p.price)}</span>
+              ${p.old ? `<span class="old">${money.format(p.old)}</span>` : ""}
+            </div>
+            <button type="button" onclick="addToCart(${p.id})" style="margin-top:10px; width:100%; background:#171717; color:#fff; border:none; padding:9px; border-radius:4px; cursor:pointer; font-weight:600;">
+              Add to Cart
+            </button>
+          </div>
+        </article>
+      `).join("") || `<p style="color:var(--muted)">कोई प्रोडक्ट नहीं मिला।</p>`;
+    }
 
-    if (cart.length === 0) {
-      cartDiv.innerHTML = "<p>Cart खाली है।</p>";
-      checkoutBox.style.display = "none";
-    } else {
-      checkoutBox.style.display = "block";
-      cartDiv.innerHTML = cart.map(item => {
-        total += item.price * item.qty;
-        count += item.qty;
-        return `
-          <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid #eee;">
-            <span>${item.name} × ${item.qty} = <b>₹${item.price * item.qty}</b></span>
-            <button onclick="removeFromCart(${item.id})" style="background:#e11d48; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer;">Remove</button>
-          </div>
-        `;
-      }).join("");
-    }
+    function addToCart(id) {
+      const prod = products.find(p => p.id === id);
+      if (!prod) return;
+      const found = cart.find(item => item.id === id);
+      if (found) {
+        found.qty += 1;
+      } else {
+        cart.push({...prod, qty: 1});
+      }
+      saveCart();
+    }
 
-    countSpan.innerText = count;
-    totalSpan.innerText = total;
-  }
+    function changeQty(id, delta) {
+      const item = cart.find(c => c.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter(c => c.id !== id);
+      }
+      saveCart();
+    }
 
-  function sendOrderToWhatsApp() {
-    const name = document.getElementById("cust-name").value.trim();
-    const phone = document.getElementById("cust-phone").value.trim();
-    const address = document.getElementById("cust-address").value.trim();
+    function saveCart() {
+      localStorage.setItem("ifeel_cart", JSON.stringify(cart));
+      renderCart();
+    }
 
-    if (!name || !phone || !address) {
-      alert("कृपया नाम, मोबाइल नंबर और पूरा पता भरें।");
-      return;
-    }
+    function renderCart() {
+      const box = document.getElementById("cart-items");
+      const countEl = document.getElementById("cart-count");
+      const totalEl = document.getElementById("cart-total");
+      const checkoutBox = document.getElementById("checkout-box");
 
-    let message = `*New Order - I FEEL CLOTH*%0A%0A`;
-    message += `*Customer:* ${name}%0A`;
-    message += `*Phone:* ${phone}%0A`;
-    message += `*Address:* ${address}%0A%0A`;
-    message += `*Items:*%0A`;
+      let totalQty = 0;
+      let totalPrice = 0;
 
-    let total = 0;
-    cart.forEach(item => {
-      const sub = item.price * item.qty;
-      total += sub;
-      message += `- ${item.name} (x${item.qty}) : ₹${sub}%0A`;
-    });
+      if (cart.length === 0) {
+        box.innerHTML = `<p style="color:var(--muted);">Cart अभी खाली है। किसी प्रोडक्ट पर Add to Cart दबाएं।</p>`;
+        checkoutBox.style.display = "none";
+      } else {
+        checkoutBox.style.display = "block";
+        box.innerHTML = cart.map(item => {
+          totalQty += item.qty;
+          totalPrice += item.price * item.qty;
+          return `
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--line); gap:10px; flex-wrap:wrap;">
+              <div>
+                <strong>${item.name}</strong><br>
+                <span style="color:var(--muted); font-size:13px;">${money.format(item.price)} × ${item.qty} = <strong>${money.format(item.price * item.qty)}</strong></span>
+              </div>
+              <div style="display:flex; gap:6px; align-items:center;">
+                <button type="button" onclick="changeQty(${item.id}, -1)" style="padding:4px 10px; cursor:pointer;">-</button>
+                <span>${item.qty}</span>
+                <button type="button" onclick="changeQty(${item.id}, 1)" style="padding:4px 10px; cursor:pointer;">+</button>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
 
-    message += `%0A*Total Amount:* ₹${total}`;
+      countEl.textContent = totalQty;
+      totalEl.textContent = money.format(totalPrice);
+    }
 
-    // अपना WhatsApp नंबर यहाँ डालें (91 के साथ, बिना + या space के)
-    const myWhatsAppNumber = "919001334176";
-    const url = `https://wa.me/${myWhatsAppNumber}?text=${message}`;
-    window.open(url, "_blank");
-  }
+    function sendOrderToWhatsApp() {
+      const name = document.getElementById("cust-name").value.trim();
+      const phone = document.getElementById("cust-phone").value.trim();
+      const address = document.getElementById("cust-address").value.trim();
 
-  renderProducts();
-  saveAndRenderCart();
-      </script>
-  
+      if (!name || !phone || !address) {
+        alert("कृपया ग्राहक का नाम, मोबाइल नंबर और पूरा पता भरें।");
+        return;
+      }
+
+      let msg = `*New Order - I FEEL CLOTH*%0A%0A`;
+      msg += `*Name:* ${name}%0A`;
+      msg += `*Phone:* ${phone}%0A`;
+      msg += `*Address:* ${address}%0A%0A`;
+      msg += `*Order Items:*%0A`;
+
+      let total = 0;
+      cart.forEach(item => {
+        const sub = item.price * item.qty;
+        total += sub;
+        msg += `• ${item.name} (${item.qty}) - ₹${sub}%0A`;
+      });
+
+      msg += `%0A*Total Amount:* ₹${total}`;
+
+      // अपना WhatsApp नंबर यहाँ डालें (91 के साथ, बिना + या space के)
+      const myWhatsAppNumber = "919876543210";
+      window.open(`https://wa.me/${myWhatsAppNumber}?text=${msg}`, "_blank");
+    }
+
+    document.getElementById("search").addEventListener("input", render);
+    drawCats();
+    render();
+    renderCart();
+  </script>
+</body>
+</html>
