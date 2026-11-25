@@ -1,233 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#171717">
-<title>I FEEL CLOTH | Shop Everything</title>
-<meta name="description" content="I FEEL CLOTH — fashion, lifestyle, home and everyday shopping in India.">
+<title>I FEEL CLOTH | Fashion Store</title>
 <style>
-:root{--dark:#171717;--gold:#b88a54;--paper:#f7f5f1;--muted:#777;--line:#e9e4dc;--white:#fff}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--dark);font-family:Arial,Helvetica,sans-serif}
-a{text-decoration:none;color:inherit}button,input,select{font:inherit}
-.announcement{background:var(--dark);color:#fff;text-align:center;padding:9px 12px;font-size:11px;letter-spacing:1px}
-header{background:#fff;position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line)}
-.nav{max-width:1180px;margin:auto;padding:15px 20px;display:flex;align-items:center;gap:22px}
-.brand{min-width:max-content}.logo{font:700 26px Georgia,serif;letter-spacing:1px}.logo em{color:var(--gold);font-style:normal}.tag{font-size:9px;letter-spacing:2px;color:var(--muted);margin-top:4px}
-.search{display:flex;flex:1;border:1px solid var(--line);background:#fafafa}.search input{border:0;background:transparent;outline:0;padding:12px;width:100%;min-width:0}.search button{border:0;background:var(--dark);color:#fff;padding:0 18px;cursor:pointer}
-.navlinks{display:flex;gap:18px;font-size:13px;white-space:nowrap}
-.hero{max-width:1180px;margin:24px auto;padding:0 20px}.hero-inner{min-height:340px;border-radius:5px;background:linear-gradient(90deg,rgba(10,10,10,.88),rgba(10,10,10,.2)),url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1800&q=85') center/cover;display:flex;align-items:center;padding:44px;color:#fff}
-.hero-copy{max-width:510px}.eyebrow{font-size:11px;letter-spacing:3px;color:#e7c69e}h1{font:700 clamp(38px,6vw,66px)/1.02 Georgia,serif;margin:15px 0}.hero p{line-height:1.7;color:#f1eee9;max-width:430px;font-size:15px}.gold-btn{display:inline-block;margin-top:12px;background:var(--gold);color:#fff;padding:14px 22px;font-size:11px;letter-spacing:1.2px;border:0;cursor:pointer}
-.wrap{max-width:1180px;margin:auto;padding:0 20px}.section-head{display:flex;justify-content:space-between;align-items:end;margin:35px 0 17px}.section-head h2{font:700 30px Georgia,serif;margin:0}.section-head p{font-size:13px;color:var(--muted);margin:6px 0 0}
-.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}.cat{background:#fff;border:1px solid var(--line);padding:17px 8px;text-align:center;cursor:pointer;min-height:95px}.cat.active,.cat:hover{border-color:var(--gold);box-shadow:0 4px 14px #0000000b}.cat i{font-style:normal;display:block;font-size:25px;margin-bottom:8px}.cat b{font-size:12px}
-.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:18px 0}.toolbar span{font-size:12px;color:var(--muted)}.toolbar select{padding:10px;border:1px solid var(--line);background:#fff}
-.products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.product{background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;min-width:0}.product img{width:100%;aspect-ratio:4/4.2;object-fit:cover;background:#eee}.info{padding:13px;display:flex;flex-direction:column;flex:1}.pcat{font-size:10px;color:var(--gold);letter-spacing:1px;text-transform:uppercase}.pname{font-size:14px;line-height:1.4;margin:7px 0;min-height:38px}.price{font-size:16px;font-weight:700}.old{font-size:11px;color:#999;text-decoration:line-through;margin-left:7px;font-weight:400}.partner{font-size:10px;color:var(--muted);margin-top:7px}.buy{display:block;text-align:center;background:var(--dark);color:#fff;padding:12px 8px;margin-top:12px;font-size:11px;letter-spacing:1px}.buy:hover{background:var(--gold)}.empty{grid-column:1/-1;background:#fff;text-align:center;padding:30px;color:var(--muted)}
-.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:32px 0}.trust div{background:#fff;border:1px solid var(--line);padding:17px;text-align:center;font-size:12px}.trust strong{display:block;margin-bottom:5px}
-footer{margin-top:48px;background:var(--dark);color:#fff;padding:34px 20px}.foot{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}.foot p{font-size:12px;line-height:1.7;color:#c9c9c9;max-width:500px}.disclosure{max-width:1180px;margin:20px auto 0;padding-top:16px;border-top:1px solid #444;color:#c9c9c9;font-size:11px;line-height:1.6}
-@media(max-width:800px){.nav{flex-wrap:wrap;gap:12px}.search{order:3;flex-basis:100%}.navlinks{margin-left:auto}.categories{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,1fr)}.hero-inner{min-height:300px;padding:26px}.trust{grid-template-columns:1fr}}
-@media(max-width:420px){.wrap{padding:0 12px}.hero{padding:0 12px}.hero-inner{padding:22px}.logo{font-size:22px}.navlinks{font-size:11px;gap:10px}.products{gap:10px}.info{padding:10px}.pname{font-size:13px}.buy{font-size:10px}}
+:root{--ink:#171717;--muted:#777;--cream:#f7f4ef;--accent:#c59b68}
+*{box-sizing:border-box}body{margin:0;font-family:Arial, sans-serif;color:var(--ink);background:#fff}
+header{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid #eee;padding:14px 5%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:900;letter-spacing:2px;font-size:20px}.logo span{color:var(--accent)}
+button{border:0;cursor:pointer;font-weight:700}.cartbtn,.darkbtn{background:var(--ink);color:#fff;padding:11px 15px;border-radius:3px}
+.hero{background:linear-gradient(100deg,rgba(0,0,0,.68),rgba(0,0,0,.12)),url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1600&q=85') center/cover;min-height:390px;color:#fff;padding:70px 7%;display:flex;flex-direction:column;justify-content:center}
+.hero small{letter-spacing:4px}.hero h1{font-size:clamp(38px,8vw,68px);max-width:620px;margin:14px 0}.hero p{max-width:440px;line-height:1.6}.hero a{display:inline-block;background:#fff;color:#111;text-decoration:none;padding:14px 22px;font-weight:bold;width:max-content;margin-top:12px}
+.wrap{padding:35px 5%;max-width:1200px;margin:auto}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap}.sectionhead h2{font-size:28px;margin:0 0 7px}.muted{color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:22px}
+.product{border:1px solid #eee;background:#fff}.product img{width:100%;height:220px;object-fit:cover;background:var(--cream)}.pbody{padding:13px}.pbody h3{font-size:15px;margin:0 0 7px}.price{font-weight:800}.pbody button{display:block;width:100%;margin-top:12px;padding:12px;background:var(--ink);color:white}
+.banner{background:var(--cream);padding:25px;text-align:center;margin-top:35px}.banner h2{margin:0 0 8px}
+footer{background:#171717;color:#fff;padding:28px 5%;text-align:center;font-size:13px}
+.overlay{display:none;position:fixed;inset:0;background:#0008;z-index:10;justify-content:flex-end}.drawer{background:#fff;width:min(440px,100%);height:100%;padding:20px;overflow:auto}.drawerhead{display:flex;justify-content:space-between;align-items:center}.close{background:#eee;padding:9px 12px}.cartrow{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #eee;padding:13px 0;font-size:14px}.qty button{padding:4px 9px;background:#eee}.total{font-size:19px;font-weight:800;text-align:right;margin:20px 0}
+input,textarea{width:100%;padding:12px;margin:7px 0 12px;border:1px solid #ddd;border-radius:3px;font:inherit}label{font-size:13px;font-weight:bold}.checkout{width:100%;padding:14px;background:#16834a;color:white}
+.notice{background:#fff5df;padding:12px;font-size:12px;line-height:1.5;margin-top:14px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}.product img{height:280px}.hero{min-height:480px}}
 </style>
 </head>
 <body>
-<div class="announcement">MADE FOR INDIA &nbsp; • &nbsp; PRICES IN ₹ INR &nbsp; • &nbsp; FASHION, HOME & EVERYDAY</div>
-<header><div class="nav">
-  <a class="brand" href="#"><div class="logo">I FEEL <em>CLOTH</em></div><div class="tag">YOUR EVERYDAY SHOPPING DESTINATION</div></a>
-  <div class="search"><input id="search" type="search" placeholder="प्रोडक्ट खोजें / Search products..." aria-label="Search products"><button onclick="render()">SEARCH</button></div>
-  <nav class="navlinks"><a href="#categories">Categories</a><a href="#shop">Shop</a></nav>
-</div></header>
-<main>
-<section class="hero"><div class="hero-inner"><div class="hero-copy">
-  <div class="eyebrow">STYLE • HOME • EVERYDAY</div>
-  <h1>Everything you love, in one place.</h1>
-  <p>Fashion, lifestyle और रोजमर्रा की जरूरतों के लिए एक आसान shopping destination. अपनी पसंद के products खोजें।</p>
-  <a class="gold-btn" href="#shop">EXPLORE THE STORE</a>
-</div></div></section>
-<section class="wrap" id="categories"><div class="section-head"><div><h2>Shop by Category</h2><p>अपनी पसंद की कैटेगरी चुनें</p></div></div><div class="categories" id="cats"></div></section>
-<section class="wrap" id="shop"><div class="section-head"><div><h2>Popular Picks</h2><p>अलग-अलग कैटेगरी के चुने हुए प्रोडक्ट</p></div></div>
-<div class="toolbar"><span id="count">Products</span><select id="sort" onchange="render()"><option value="featured">Sort: Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select></div>
-<div class="products" id="grid"></div>
-    <div class="trust"><div><strong>🇮🇳 India Focused</strong><br>भारतीय रुपये में कीमतें</div><div><strong>🛍️ Multiple Categories</strong><br>Fashion से daily essentials तक</div><div><strong>📦 Easy Reselling Order</strong><br>WhatsApp पर सीधा ऑर्डर बुक करें</div></div>
-  </section></main>
-
-  <!-- Cart & WhatsApp Checkout Section -->
-  <section class="wrap" id="cart-section" style="margin-top: 28px; margin-bottom: 40px;">
-    <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:20px;">
-      <h2 style="margin:0 0 12px;">Your Cart (<span id="cart-count">0</span>)</h2>
-      <div id="cart-items"><p style="color:var(--muted);">Cart अभी खाली है। किसी प्रोडक्ट पर Add to Cart दबाएं।</p></div>
-      <h3 style="margin:14px 0;">Total: <span id="cart-total">₹0</span></h3>
-
-      <div id="checkout-box" style="display:none; background:#fafafa; border:1px solid var(--line); padding:16px; border-radius:6px; margin-top:14px;">
-        <h3 style="margin-top:0;">ग्राहक की जानकारी (WhatsApp Order)</h3>
-        <input type="text" id="cust-name" placeholder="ग्राहक का पूरा नाम" style="width:100%; padding:10px; margin-bottom:10px; border:1px solid var(--line); border-radius:4px; box-sizing:border-box;">
-        <input type="tel" id="cust-phone" placeholder="ग्राहक का मोबाइल नंबर" style="width:100%; padding:10px; margin-bottom:10px; border:1px solid var(--line); border-radius:4px; box-sizing:border-box;">
-        <textarea id="cust-address" rows="3" placeholder="पूरा पता (House No, Street, City, State, Pincode)" style="width:100%; padding:10px; margin-bottom:12px; border:1px solid var(--line); border-radius:4px; box-sizing:border-box;"></textarea>
-        <button type="button" onclick="sendOrderToWhatsApp()" style="background:#171717; color:#fff; border:none; padding:12px 18px; border-radius:4px; cursor:pointer; font-weight:600;">
-          Place Order on WhatsApp
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <footer class="foot"><div class="wrap"><div class="foot-grid"><div><div class="logo">I FEEL <em>CLOTH</em></div><p class="foot-copy">Your everyday shopping destination. Fashion, lifestyle और रोज़मर्रा की ज़रूरतों के लिए आसान खरीदारी।</p></div></div><div class="copy">© I FEEL CLOTH. All rights reserved.</div></div></footer>
-
-  <script>
-    const categories = [
-      ["All Products","✦"],
-      ["Men's Fashion","👔"],
-      ["Women's Fashion","👗"],
-      ["Footwear","👟"],
-      ["Home & Kitchen","🏠"],
-      ["Beauty & Care","✨"],
-      ["Electronics","🎧"],
-      ["Kids","🧸"]
-    ];
-
-    // यहाँ अपने Meesho के प्रोडक्ट्स डालें
-    const products = [
-      {id:1, name:"Cotton Kurta Set (M/L/XL)", cat:"Women's Fashion", price:499, old:799, img:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80"},
-      {id:2, name:"Men Casual Shirt", cat:"Men's Fashion", price:599, old:999, img:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80"}
-    ];
-
-    let active = "All Products";
-    let cart = JSON.parse(localStorage.getItem("ifeel_cart")) || [];
-    const money = new Intl.NumberFormat("en-IN", {style:"currency", currency:"INR", maximumFractionDigits:0});
-
-    function drawCats() {
-      document.getElementById("cats").innerHTML = categories.map(([name, icon]) =>
-        `<button type="button" class="cat ${active===name?'active':''}" onclick="pick('${name.replace(/'/g,"\\'")}')"><span class="ico">${icon}</span>${name}</button>`
-      ).join("");
-    }
-
-    function pick(name) {
-      active = name;
-      drawCats();
-      render();
-    }
-
-    function render() {
-      const q = document.getElementById("search").value.toLowerCase().trim();
-      let list = products.filter(p => (active==="All Products" || p.cat===active) && (!q || p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q)));
-      const sort = document.getElementById("sort").value;
-      if (sort === "price-asc") list = [...list].sort((a,b) => a.price - b.price);
-      if (sort === "price-desc") list = [...list].sort((a,b) => b.price - a.price);
-
-      document.getElementById("count").textContent = list.length + " products";
-      document.getElementById("grid").innerHTML = list.map(p => `
-        <article class="product">
-          <img src="${p.img}" alt="${p.name}" loading="lazy">
-          <div class="p-body">
-            <div class="p-cat">${p.cat}</div>
-            <h3 class="p-name">${p.name}</h3>
-            <div class="price-row">
-              <span class="price">${money.format(p.price)}</span>
-              ${p.old ? `<span class="old">${money.format(p.old)}</span>` : ""}
-            </div>
-            <button type="button" onclick="addToCart(${p.id})" style="margin-top:10px; width:100%; background:#171717; color:#fff; border:none; padding:9px; border-radius:4px; cursor:pointer; font-weight:600;">
-              Add to Cart
-            </button>
-          </div>
-        </article>
-      `).join("") || `<p style="color:var(--muted)">कोई प्रोडक्ट नहीं मिला।</p>`;
-    }
-
-    function addToCart(id) {
-      const prod = products.find(p => p.id === id);
-      if (!prod) return;
-      const found = cart.find(item => item.id === id);
-      if (found) {
-        found.qty += 1;
-      } else {
-        cart.push({...prod, qty: 1});
-      }
-      saveCart();
-    }
-
-    function changeQty(id, delta) {
-      const item = cart.find(c => c.id === id);
-      if (!item) return;
-      item.qty += delta;
-      if (item.qty <= 0) {
-        cart = cart.filter(c => c.id !== id);
-      }
-      saveCart();
-    }
-
-    function saveCart() {
-      localStorage.setItem("ifeel_cart", JSON.stringify(cart));
-      renderCart();
-    }
-
-    function renderCart() {
-      const box = document.getElementById("cart-items");
-      const countEl = document.getElementById("cart-count");
-      const totalEl = document.getElementById("cart-total");
-      const checkoutBox = document.getElementById("checkout-box");
-
-      let totalQty = 0;
-      let totalPrice = 0;
-
-      if (cart.length === 0) {
-        box.innerHTML = `<p style="color:var(--muted);">Cart अभी खाली है। किसी प्रोडक्ट पर Add to Cart दबाएं।</p>`;
-        checkoutBox.style.display = "none";
-      } else {
-        checkoutBox.style.display = "block";
-        box.innerHTML = cart.map(item => {
-          totalQty += item.qty;
-          totalPrice += item.price * item.qty;
-          return `
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--line); gap:10px; flex-wrap:wrap;">
-              <div>
-                <strong>${item.name}</strong><br>
-                <span style="color:var(--muted); font-size:13px;">${money.format(item.price)} × ${item.qty} = <strong>${money.format(item.price * item.qty)}</strong></span>
-              </div>
-              <div style="display:flex; gap:6px; align-items:center;">
-                <button type="button" onclick="changeQty(${item.id}, -1)" style="padding:4px 10px; cursor:pointer;">-</button>
-                <span>${item.qty}</span>
-                <button type="button" onclick="changeQty(${item.id}, 1)" style="padding:4px 10px; cursor:pointer;">+</button>
-              </div>
-            </div>
-          `;
-        }).join("");
-      }
-
-      countEl.textContent = totalQty;
-      totalEl.textContent = money.format(totalPrice);
-    }
-
-    function sendOrderToWhatsApp() {
-      const name = document.getElementById("cust-name").value.trim();
-      const phone = document.getElementById("cust-phone").value.trim();
-      const address = document.getElementById("cust-address").value.trim();
-
-      if (!name || !phone || !address) {
-        alert("कृपया ग्राहक का नाम, मोबाइल नंबर और पूरा पता भरें।");
-        return;
-      }
-
-      let msg = `*New Order - I FEEL CLOTH*%0A%0A`;
-      msg += `*Name:* ${name}%0A`;
-      msg += `*Phone:* ${phone}%0A`;
-      msg += `*Address:* ${address}%0A%0A`;
-      msg += `*Order Items:*%0A`;
-
-      let total = 0;
-      cart.forEach(item => {
-        const sub = item.price * item.qty;
-        total += sub;
-        msg += `• ${item.name} (${item.qty}) - ₹${sub}%0A`;
-      });
-
-      msg += `%0A*Total Amount:* ₹${total}`;
-
-      // अपना WhatsApp नंबर यहाँ डालें (91 के साथ, बिना + या space के)
-      const myWhatsAppNumber = "919001334176";
-      window.open(`https://wa.me/${myWhatsAppNumber}?text=${msg}`, "_blank");
-    }
-
-    document.getElementById("search").addEventListener("input", render);
-    drawCats();
-    render();
-    renderCart();
-  </script>
-</body>
-</html>
+<header><div class="logo">I FEEL <span>CLOTH</span></div><button class="cartbtn" onclick="openCart()">CART (<b id="count">0</b>)</button></header>
+<section class="hero"><small>NEW SEASON • NEW STYLE</small><h1>STYLE THAT<br>FEELS LIKE YOU.</h1><p>Discover everyday fashion and fresh looks at I FEEL CLOTH.</p><a href="#shop">SHOP COLLECTION</a></section>
+<main class="wrap" id="shop">
+ <div class="sectionhead"><div><h2>Featured Collection</h2><div class="muted">A fresh edit of everyday favourites.</div></div><div class="muted">Fashion • Lifestyle • More</div></div>
+ <div class="grid" id="products"></div>
+ <div class="banner"><h2>Find your everyday style.</h2><p class="muted">Add your favourites to cart and place your order on WhatsApp.</p></div>
+</main>
+<footer><div class="logo">I FEEL <span>CLOTH</span></div><p>Fashion for every day.</p><p>© <span id="year"></span> I FEEL CLOTH</p></footer>
+<div class="overlay" id="overlay" onclick="if(event.target.id==='overlay')closeCart()"><div class="drawer">
+ <div class="drawerhead"><h2>Your Cart</h2><button class="close" onclick="closeCart()">Close ✕</button></div>
+ <div id="cartitems"></div><div class="total" id="total">Total: ₹0</div>
+ <h3>Delivery details</h3><form id="orderform">
+ <label>Your name</label><input id="customer" required placeholder="Enter your name">
+ <label>Mobile number</label><input id="mobile" required inputmode="tel" placeholder="10-digit mobile number">
+ <label>Delivery address</label><textarea id="address" required rows="3" placeholder="Full delivery address"></textarea>
+ <button class="checkout" type="submit">PLACE ORDER ON WHATSAPP</button></form>
+ <div class="notice">Demo setup: Before accepting orders, replace the WhatsApp number in this file with your business number (country code + number, digits only). Product names and prices can also be edited in the PRODUCTS list in the code.</div>
+</div></div>
+<script>
+const WHATSAPP_NUMBER = "919001334176"; // Replace with your WhatsApp number, e.g. 91 + 10 digit number
+const PRODUCTS = [
+ {id:1,name:"Classic Everyday Shirt",price:599,img:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=700&q=80"},
+ {id:2,name:"Casual Streetwear",price:799,img:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=80"},
+ {id:3,name:"Minimal Summer Outfit",price:899,img:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=80"},
+ {id:4,name:"Everyday Fashion",price:699,img:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=80"}
+];
+let cart={};
+const money=n=>"₹"+n.toLocaleString("en-IN");
+function renderProducts(){document.getElementById("products").innerHTML=PRODUCTS.map(p=>`<article class="product"><img src="${p.img}" alt="${p.name}" loading="lazy"><div class="pbody"><h3>${p.name}</h3><div class="price">${money(p.price)}</div><button onclick="add(${p.id})">ADD TO CART</button></div></article>`).join("")}
+function add(id){cart[id]=(cart[id]||0)+1;updateCart();openCart()}
+function change(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];updateCart()}
+function updateCart(){let entries=Object.entries(cart);document.getElementById("count").textContent=entries.reduce((s,[,q])=>s+q,0);document.getElementById("cartitems").innerHTML=entries.length?entries.map(([id,q])=>{let p=PRODUCTS.find(x=>x.id==id);return `<div class="cartrow"><div><b>${p.name}</b><br>${money(p.price)} × ${q}</div><div class="qty"><button onclick="change(${id},-1)">−</button> ${q} <button onclick="change(${id},1)">+</button></div></div>`}).join(""):"<p class='muted'>Your cart is empty.</p>";let total=entries.reduce((s,[id,q])=>s+PRODUCTS.find(p=>p.id==id).price*q,0);document.getElementById("total").textContent="Total: "+money(total)}
+function openCart(){document.getElementById("overlay").style.display="flex"}function closeCart(){document.getElementById("overlay").style.display="none"}
+document.getElementById("orderform").addEventListener("submit",e=>{e.preventDefault();let entries=Object.entries(cart);if(!entries.length){alert("Please add a product first.");return}if(WHATSAPP_NUMBER.includes("X")){alert("First replace WHATSAPP_NUMBER in the file with your WhatsApp number.");return}let lines=entries.map(([id,q])=>{let p=PRODUCTS.find(x=>x.id==id);return `${p.name} x ${q} = ${money(p.price*q)}`});let total=entries.reduce((s,[id,q])=>s+PRODUCTS.find(p=>p.id==id).price*q,0);let msg=`New order - I FEEL CLOTH%0A%0A${lines.join("%0A")}%0A%0ATotal: ${money(total)}%0AName: ${document.getElementById("customer").value}%0AMobile: ${document.getElementById("mobile").value}%0AAddress: ${document.getElementById("address").value}`;window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,"_blank")});
+document.getElementById("year").textContent=new Date().getFullYear();renderProducts();updateCart();
+</script>
+</body></html>
