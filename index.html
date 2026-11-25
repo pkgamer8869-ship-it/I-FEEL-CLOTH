@@ -40,25 +40,37 @@ input,textarea{width:100%;padding:12px;margin:7px 0 12px;border:1px solid #ddd;b
  <label>Your name</label><input id="customer" required placeholder="Enter your name">
  <label>Mobile number</label><input id="mobile" required inputmode="tel" placeholder="10-digit mobile number">
  <label>Delivery address</label><textarea id="address" required rows="3" placeholder="Full delivery address"></textarea>
- <button class="checkout" type="submit">PLACE ORDER ON WHATSAPP</button></form>
+ <button class="checkout" type="submit">PLACE ORDER</button></form><div id="status" role="status"></div>
  <div class="notice">Demo setup: Before accepting orders, replace the WhatsApp number in this file with your business number (country code + number, digits only). Product names and prices can also be edited in the PRODUCTS list in the code.</div>
 </div></div>
-<script>
-const WHATSAPP_NUMBER = "919001334176"; // Replace with your WhatsApp number, e.g. 91 + 10 digit number
-const PRODUCTS = [
- {id:1,name:"Classic Everyday Shirt",price:599,img:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=700&q=80"},
- {id:2,name:"Casual Streetwear",price:799,img:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=80"},
- {id:3,name:"Minimal Summer Outfit",price:899,img:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=80"},
- {id:4,name:"Everyday Fashion",price:699,img:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=80"}
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+import { getFirestore, collection, getDocs, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js";
+const firebaseConfig = {
+ apiKey: "AIzaSyDyddjU7XGEuaEuWNvQi0y2lqCev4f2Nt0",
+ authDomain: "i-feel-cloth.firebaseapp.com",
+ databaseURL: "https://i-feel-cloth-default-rtdb.firebaseio.com",
+ projectId: "i-feel-cloth",
+ storageBucket: "i-feel-cloth.firebasestorage.app",
+ messagingSenderId: "544985106645",
+ appId: "1:544985106645:web:e335d98c3c56c895137a5c",
+ measurementId: "G-DM4J362X48"
+};
+const app=initializeApp(firebaseConfig), db=getFirestore(app);
+const WHATSAPP_NUMBER="919001334176";
+let PRODUCTS=[
+{id:1,name:"Classic Everyday Shirt",price:599,img:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=700&q=80"},
+{id:2,name:"Casual Streetwear",price:799,img:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=80"},
+{id:3,name:"Minimal Summer Outfit",price:899,img:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=80"},
+{id:4,name:"Everyday Fashion",price:699,img:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=80"}
 ];
-let cart={};
-const money=n=>"₹"+n.toLocaleString("en-IN");
-function renderProducts(){document.getElementById("products").innerHTML=PRODUCTS.map(p=>`<article class="product"><img src="${p.img}" alt="${p.name}" loading="lazy"><div class="pbody"><h3>${p.name}</h3><div class="price">${money(p.price)}</div><button onclick="add(${p.id})">ADD TO CART</button></div></article>`).join("")}
-function add(id){cart[id]=(cart[id]||0)+1;updateCart();openCart()}
-function change(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];updateCart()}
-function updateCart(){let entries=Object.entries(cart);document.getElementById("count").textContent=entries.reduce((s,[,q])=>s+q,0);document.getElementById("cartitems").innerHTML=entries.length?entries.map(([id,q])=>{let p=PRODUCTS.find(x=>x.id==id);return `<div class="cartrow"><div><b>${p.name}</b><br>${money(p.price)} × ${q}</div><div class="qty"><button onclick="change(${id},-1)">−</button> ${q} <button onclick="change(${id},1)">+</button></div></div>`}).join(""):"<p class='muted'>Your cart is empty.</p>";let total=entries.reduce((s,[id,q])=>s+PRODUCTS.find(p=>p.id==id).price*q,0);document.getElementById("total").textContent="Total: "+money(total)}
-function openCart(){document.getElementById("overlay").style.display="flex"}function closeCart(){document.getElementById("overlay").style.display="none"}
-document.getElementById("orderform").addEventListener("submit",e=>{e.preventDefault();let entries=Object.entries(cart);if(!entries.length){alert("Please add a product first.");return}if(WHATSAPP_NUMBER.includes("X")){alert("First replace WHATSAPP_NUMBER in the file with your WhatsApp number.");return}let lines=entries.map(([id,q])=>{let p=PRODUCTS.find(x=>x.id==id);return `${p.name} x ${q} = ${money(p.price*q)}`});let total=entries.reduce((s,[id,q])=>s+PRODUCTS.find(p=>p.id==id).price*q,0);let msg=`New order - I FEEL CLOTH%0A%0A${lines.join("%0A")}%0A%0ATotal: ${money(total)}%0AName: ${document.getElementById("customer").value}%0AMobile: ${document.getElementById("mobile").value}%0AAddress: ${document.getElementById("address").value}`;window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,"_blank")});
-document.getElementById("year").textContent=new Date().getFullYear();renderProducts();updateCart();
+let cart={}; const money=n=>"₹"+Number(n).toLocaleString("en-IN");
+function renderProducts(){document.getElementById("products").innerHTML=PRODUCTS.map(p=>`<article class="product"><img src="${p.image||p.img}" alt="${p.name}" loading="lazy"><div class="pbody"><h3>${p.name}</h3><div class="price">${money(p.price)}</div><button data-add="${p.id}">ADD TO CART</button></div></article>`).join("");document.querySelectorAll("[data-add]").forEach(b=>b.addEventListener("click",()=>add(b.dataset.add)));}
+async function loadProducts(){try{const snap=await getDocs(collection(db,"products"));const rows=snap.docs.map(d=>({id:d.id,...d.data()})).filter(p=>p.active!==false);if(rows.length)PRODUCTS=rows;}catch(e){console.warn("Using demo products; Firestore product read is not enabled yet.",e);}renderProducts();}
+function add(id){cart[id]=(cart[id]||0)+1;updateCart();openCart()} function change(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];updateCart()}
+function updateCart(){const entries=Object.entries(cart);document.getElementById("count").textContent=entries.reduce((s,[,q])=>s+q,0);document.getElementById("cartitems").innerHTML=entries.length?entries.map(([id,q])=>{const p=PRODUCTS.find(x=>String(x.id)===String(id));return `<div class="cartrow"><div><b>${p.name}</b><br>${money(p.price)} × ${q}</div><div class="qty"><button data-dec="${id}">−</button> ${q} <button data-inc="${id}">+</button></div></div>`}).join(""):"<p class='muted'>Your cart is empty.</p>";document.querySelectorAll("[data-dec]").forEach(b=>b.addEventListener("click",()=>change(b.dataset.dec,-1)));document.querySelectorAll("[data-inc]").forEach(b=>b.addEventListener("click",()=>change(b.dataset.inc,1)));const total=entries.reduce((s,[id,q])=>s+Number(PRODUCTS.find(p=>String(p.id)===String(id))?.price||0)*q,0);document.getElementById("total").textContent="Total: "+money(total)}
+function openCart(){document.getElementById("overlay").style.display="flex"} function closeCart(){document.getElementById("overlay").style.display="none"} window.openCart=openCart;window.closeCart=closeCart;
+document.getElementById("orderform").addEventListener("submit",async e=>{e.preventDefault();const entries=Object.entries(cart);if(!entries.length){alert("Please add a product first.");return}const customerName=document.getElementById("customer").value.trim(),mobile=document.getElementById("mobile").value.trim(),address=document.getElementById("address").value.trim();const items=entries.map(([id,q])=>{const p=PRODUCTS.find(x=>String(x.id)===String(id));return {productId:String(id),name:p.name,price:Number(p.price),quantity:q}});const total=items.reduce((s,p)=>s+p.price*p.quantity,0);const btn=e.target.querySelector("button[type=submit]"),status=document.getElementById("status");btn.disabled=true;btn.textContent="SAVING ORDER...";try{const saved=await addDoc(collection(db,"orders"),{customerName,mobile,address,items,total,status:"pending",createdAt:serverTimestamp()});const msg=`New I FEEL CLOTH order%0AOrder ID: ${saved.id}%0A${items.map(p=>`${p.name} x ${p.quantity} = ${money(p.price*p.quantity)}`).join("%0A")}%0ATotal: ${money(total)}%0AName: ${encodeURIComponent(customerName)}%0AMobile: ${mobile}%0AAddress: ${encodeURIComponent(address)}`;status.textContent="Order saved. Opening WhatsApp...";window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,"_blank");cart={};updateCart();e.target.reset()}catch(err){console.error(err);status.textContent="Order save failed. Firestore security rules need to be configured before checkout can work."}finally{btn.disabled=false;btn.textContent="PLACE ORDER"}});
+document.getElementById("year").textContent=new Date().getFullYear();renderProducts();updateCart();loadProducts();
 </script>
 </body></html>
