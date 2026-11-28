@@ -89,8 +89,9 @@ async function loadProducts() {
 
     if (rows.length) PRODUCTS = rows;
 
-  } catch (e) {
-    console.error("Firestore error:", e);
+  catch(e) {
+  console.error("Firestore error:", e);
+  alert("Firebase Error: " + e.message);
   }
 
   renderProducts();
