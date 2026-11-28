@@ -69,7 +69,7 @@ function renderProducts(){document.getElementById("products").innerHTML=PRODUCTS
 
 async function loadProducts() {
   try {
-    const snap = await getDocs(collection(db, "Products"));
+    const snap = await getDocs(collectionGroup(db, "Products"));
 
     const rows = snap.docs.map(d => {
       const x = d.data();
